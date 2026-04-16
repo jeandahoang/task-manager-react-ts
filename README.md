@@ -108,8 +108,18 @@ export function TaskItem({task, onToggle} : TaskItemProps) {
     return (
         <div className="task-item">
             <input type="checkbox" checked={task.isCompleted} onChange={()=>onToggle(task.id)} />
-            <span style={{textDecoration: task.isCompleted ? 'line-through' : 'none'}}>{task.title}</span>
+             <span style={{textDecoration: task.isCompleted ? 'line-through' : 'none'}}>{task.title} {task.dueDate ? `by this date: ${new Date(task.dueDate).toLocaleDateString()}` : '(optional)'}</span>
         </div>
     );
 }
+```
+## Asynchronous Request
+Fetch data asynchronously to load tasks.
+```js
+  useEffect(() => {
+     fetch('../data/tasks.json')
+    .then(response => response.json())
+    .then((jsonData: Task[]) => setTasks(jsonData))
+    .catch(error => console.log('Error loading JSON:', error));
+  }, []);
 ```
