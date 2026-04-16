@@ -93,4 +93,23 @@ export interface Task {
   isCompleted: boolean;
   dueDate?: Date; // dueDate is optional
 }
+```
+## Create Typed Components
+Use standard function declaration with typed props for UI.
+```js
+// src/components/TaskItem.tsx
+interface TaskItemProps {
+    task: Task;
+    onToggle: (id: string) => void;
+}
 
+// using standard function declaration approach
+export function TaskItem({task, onToggle} : TaskItemProps) {
+    return (
+        <div className="task-item">
+            <input type="checkbox" checked={task.isCompleted} onChange={()=>onToggle(task.id)} />
+            <span style={{textDecoration: task.isCompleted ? 'line-through' : 'none'}}>{task.title}</span>
+        </div>
+    );
+}
+```
