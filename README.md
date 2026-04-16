@@ -73,6 +73,7 @@ export default defineConfig([
 ```
 
 ## Project Initialization
+Start by creating a new project using the Vite TypeScript template.
 >bash
 >
 >\# Create the project<br>
@@ -81,4 +82,15 @@ export default defineConfig([
 >\# Install dependencies<br>
 >npm install<br>
 >npm run dev
+
+## Define Data Models (Types)
+Define interfaces for our data. For example, a Task Manager app would require a Task type.
+```js
+// src/types/Task.ts
+export interface Task {
+  id: string;
+  title: string;
+  isCompleted: boolean;
+  dueDate?: Date; // dueDate is optional
+}
 
