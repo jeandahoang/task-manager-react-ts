@@ -116,6 +116,7 @@ export function TaskItem({task, onToggle} : TaskItemProps) {
 ## Asynchronous Request
 Fetch data asynchronously to load tasks.
 ```js
+  // src/App.tsx
   useEffect(() => {
      fetch('../data/tasks.json')
     .then(response => response.json())
