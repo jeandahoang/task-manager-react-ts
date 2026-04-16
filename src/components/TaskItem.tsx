@@ -10,7 +10,7 @@ export function TaskItem({task, onToggle} : TaskItemProps) {
     return (
         <div className="task-item">
             <input type="checkbox" checked={task.isCompleted} onChange={()=>onToggle(task.id)} />
-            <span style={{textDecoration: task.isCompleted ? 'line-through' : 'none'}}>{task.title}</span>
+            <span style={{textDecoration: task.isCompleted ? 'line-through' : 'none'}}>{task.title} {task.dueDate ? `by this date: ${new Date(task.dueDate).toLocaleDateString()}` : '(optional)'}</span>
         </div>
     );
 };
